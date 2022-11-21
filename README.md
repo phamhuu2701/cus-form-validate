@@ -4,10 +4,10 @@ A simple custom form validation that makes form validation fast and exactly.
 
 ### Instantiation:
 
-    # npm
     npm i cus-form-validate
 
-    # yarn
+    # or
+
     yarn add cus-form-validate
 
 ### Usage
@@ -15,6 +15,10 @@ A simple custom form validation that makes form validation fast and exactly.
 Import module:
 
     import { validateForm } from 'cus-form-validate'
+
+    # or
+
+    import * as FormValidate from 'cus-form-validate'
 
 Init form data:
 
@@ -90,6 +94,10 @@ or
 Validate form data:
 
     const { formValid, validFormData, message } = validateForm(formData)
+
+    # or
+
+    const { formValid, validFormData, message } = FormValidate.validateForm(formData)
 
 ### Customization:
 
