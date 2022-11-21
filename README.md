@@ -1,45 +1,95 @@
-# hdev-logger
+# cus-form-validate
 
-## Getting Started
-
-A simple logging library that combines the simple APIs of Node's console.log()
+A simple custom form validation that makes form validation fast and exactly.
 
 ### Instantiation:
 
     # npm
-    npm i hdev-logger
+    npm i cus-form-validate
 
     # yarn
-    yarn add hdev-logger
+    yarn add cus-form-validate
 
 ### Usage
 
-In Node.js:
+Import module:
 
-    import logger from 'hdev-logger'
+    import { validateForm } from 'cus-form-validate'
 
-Simple logger:
+Init form data:
 
-    logger('hello world')
-    🚀 logger: hello world
+    const formData = {
+        email: {
+            type: 'text',
+            name: 'email',
+            label: 'Email',
+            placeholder: '',
+            value: '',
+            error: '',
+            required: true,
+            validate: {
+                trim: true,
+                required: true,
+                minlength: 2,
+                maxlength: 100,
+                pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            },
+        },
+        point: {
+            type: 'number',
+            label: 'Point',
+            placeholder: '',
+            value: '',
+            error: '',
+            required: true,
+            validate: {
+                required: true,
+                min: 0,
+                max: 10,
+            },
+        }
+    }
 
-    logger(1)
-    🚀 logger: 1
+or
 
-    logger(true)
-    🚀 logger: true
+    const formData = {
+        email: {
+            type: 'text',
+            name: 'email',
+            label: 'Email',
+            placeholder: '',
+            value: '',
+            error: '',
+            required: true,
+            validate: {
+                trim: true,
+                required: [true, 'Required.'],
+                minlength: [2, 'Value length must be from 2 to 100 characters.'],
+                maxlength: [100, 'Value length must be from 2 to 100 characters.'],
+                pattern: [
+                    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    'Invalid email address.',
+                ],
+            },
+        },
+        point: {
+            type: 'number',
+            label: 'Point',
+            placeholder: '',
+            value: '',
+            error: '',
+            required: true,
+            validate: {
+                required: true,
+                min: [0, 'Value must be between 0 and 10.'],
+                max: [10, 'Value must be between 0 and 10.'],
+            },
+        }
+    }
 
-    logger({ message: 'hello world' })
-    🚀 logger: hello world
+Validate form data:
 
-Logger with callback function:
-
-    logger({
-      message: 'hello world',
-      callback: () => console.log('callback'),
-    })
-    🚀 logger: hello world
-    callback
+    const { formValid, validFormData, message } = validateForm(formData)
 
 ### Customization:
 

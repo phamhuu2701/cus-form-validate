@@ -1,16 +1,17 @@
 {
-  "name": "hdev-logger",
-  "version": "1.0.3",
+  "name": "cus-form-validate",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
-  "homepage": "https://github.com/phamhuu2701/hdev-logger",
+  "homepage": "https://github.com/phamhuu2701/cus-form-validate",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "hdev-logger",
-    "hdev",
-    "logger"
+    "cus-form-validate",
+    "form-validate",
+    "form",
+    "validate"
   ],
   "author": "",
   "license": "UNLICENSED",
